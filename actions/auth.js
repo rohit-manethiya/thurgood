@@ -8,6 +8,7 @@ var url = require('url');
 var querystring = require('querystring');
 var jwt = require('jsonwebtoken');
 var google = require('googleapis');
+var http =  require('http');
 
 var extensions = [new openid.AttributeExchange(
                   {
@@ -46,7 +47,8 @@ exports.action = {
       //extensions); // List of extensions to enable and include
       
      //relyingParty.authenticate(GOOGLE_ENDPOINT, false, deferred.makeNodeResolver());		
-	open('https://accounts.google.com//o/oauth2/auth?response_type=code&client_id=129549620262-5boveov8v4quodro74fve6gtht49puvu.apps.googleusercontent.com&redirect_uri='+api.configData.google.redirectUrl+'&scope=openid%20email%20profile');	
+		 redirectTo('https://accounts.google.com//o/oauth2/auth?response_type=code&client_id=129549620262-5boveov8v4quodro74fve6gtht49puvu.apps.googleusercontent.com&redirect_uri='+api.configData.google.redirectUrl+'&scope=openid%20email%20profile');
+	 //open('https://accounts.google.com//o/oauth2/auth?response_type=code&client_id=129549620262-5boveov8v4quodro74fve6gtht49puvu.apps.googleusercontent.com&redirect_uri='+api.configData.google.redirectUrl+'&scope=openid%20email%20profile');	
       return deferred.promise;
     }
 

@@ -95,7 +95,7 @@ exports.googleAuthReturn = {
 		var bodyParsed = JSON.parse(body);
     console.log('body Parsed', bodyParsed);
     console.log('decoded', jwt.decode(bodyParsed.id_token));
-		decoded = JSON.parse(jwt.decode(bodyParsed.id_token));			
+		decoded = jwt.decode(bodyParsed.id_token);			
 		isAuthenticated = decoded.email_verified;
 		email = decoded.email;		
 		var plus = google.plus('v1');

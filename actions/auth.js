@@ -89,7 +89,7 @@ exports.googleAuthReturn = {
 	var fullname = null;
 	var email = null;
 	
-	request.post({url:'https://www.googleapis.com/oauth2/v3/token', form: {code: query.code , client_id:'129549620262-5boveov8v4quodro74fve6gtht49puvu.apps.googleusercontent.com', client_secret:'PFMCq-bj0fJFFV6YcN1rW4po', redirect_uri:'http://localhost:5000/api/auth/google/return', grant_type:'authorization_code'}}, 
+	request.post({url:'https://www.googleapis.com/oauth2/v3/token', form: {code: query.code , client_id:'129549620262-5boveov8v4quodro74fve6gtht49puvu.apps.googleusercontent.com', client_secret:'PFMCq-bj0fJFFV6YcN1rW4po', redirect_uri:api.configData.google.redirectUrl, grant_type:'authorization_code'}}, 
 	function(err,httpResponse,body){ 
 
 		var bodyParsed = JSON.parse(body);

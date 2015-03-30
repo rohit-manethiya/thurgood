@@ -93,6 +93,7 @@ exports.googleAuthReturn = {
 	function(err,httpResponse,body){ 
 
 		var bodyParsed = JSON.parse(body);
+    console.log('body Parsed', bodyParsed);
 		decoded = JSON.parse(jwt.decode(bodyParsed.id_token));			
 		isAuthenticated = decoded.email_verified;
 		email = decoded.email;		

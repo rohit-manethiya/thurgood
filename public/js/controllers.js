@@ -296,6 +296,7 @@ thurgood.controller('JobsDetailCtrl', ['$scope', '$routeParams', '$modal', 'Jobs
  // Submit job
   $scope.submitJob = function() {
     new Jobs({id: jobId}).$submit(function(res) {
+      console.log('response', res)
       if (res.success != true) {
         submitErrorHandler(res);
         return;

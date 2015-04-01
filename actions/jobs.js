@@ -337,6 +337,7 @@ exports.jobsSubmit = {
       .fail(respondError);
 
     function reserveServer(job) {
+      console.log('Reserved Server');
       var deferred = Q.defer();
       var  serverNotFoudMsg = "Could not find any available servers. Try again in a few minutes.";
       var selector = {
@@ -397,6 +398,7 @@ exports.jobsSubmit = {
     }
 
     function updateJobAndPublish(job) {
+      console.log('updateJobAndPublish');
       var deferred = Q.defer();
       var message = {
         job_id: job._id,
@@ -435,6 +437,7 @@ exports.jobsSubmit = {
 
     // respond success with the results message
     function respondOk(result) {
+      console.log('respondok');
       api.jobs.log(connection.params.id, "thurgood", "Job submitted for processing.");
       api.response.success(connection, null, result);
       next(connection, true);

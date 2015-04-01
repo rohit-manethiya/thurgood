@@ -417,6 +417,7 @@ exports.jobsSubmit = {
         console.log('result', result);
         if (!err && result == 1) {
           // Publish message
+          console.log('result obtained');
           amqp.connect(api.configData.rabbitmq.url ).then(function(conn) {
             console.log('connection', conn);
             return when(conn.createChannel().then(function(ch) {
@@ -434,6 +435,7 @@ exports.jobsSubmit = {
           }).then(null, console.warn);
 
         } else {
+          console.log('result obtained in else');
           api.jobs.releaseServer(job);
           deferred.reject(new Error("Could not update job and publish message for processing. Contact support."));
         }

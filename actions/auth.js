@@ -83,7 +83,9 @@ exports.googleAuthReturn = {
   version: 1.0,
   run: function(api, connection, next) {	
 	var url_parts = url.parse(connection.rawConnection.req.url, true);
+  console.log('URL Parts', url_parts);
 	var query = url_parts.query;
+  console.log('query', query);
 	var isAuthenticated = false;
 	var decoded = null;
 	var fullname = null;

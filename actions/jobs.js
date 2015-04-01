@@ -418,9 +418,13 @@ exports.jobsSubmit = {
         if (!err && result == 1) {
           // Publish message
           amqp.connect(api.configData.rabbitmq.url ).then(function(conn) {
+            console.log('connection', conn);
             return when(conn.createChannel().then(function(ch) {
+              console.log('ch', ch);
               var ok = ch.assertQueue(api.configData.rabbitmq.queue, {durable: false});
+              console.log('Ok', ok);
               return ok.then(function(_qok) {
+                console.log('_qok', _qok);
                 ch.sendToQueue(api.configData.rabbitmq.queue, new Buffer(JSON.stringify(message)));
                 console.log(" [x] Sent '%s'", JSON.stringify(message));
                 deferred.resolve("Job has been successfully submitted for processing. See the job's Event Viewer for details.");

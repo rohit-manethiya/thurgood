@@ -413,6 +413,8 @@ exports.jobsSubmit = {
 
       // Set job status to submitted
       api.mongo.collections.jobs.update({ _id: job._id }, { $set: newDoc }, { w:1 }, function(err, result) {
+        console.log('error', err);
+        console.log('result', result);
         if (!err && result == 1) {
           // Publish message
           amqp.connect(api.configData.rabbitmq.url ).then(function(conn) {

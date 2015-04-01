@@ -102,7 +102,7 @@ exports.googleAuthReturn = {
 		var OAuth2 = google.auth.OAuth2;
 		var CLIENT_ID = '129549620262-5boveov8v4quodro74fve6gtht49puvu.apps.googleusercontent.com';
 		var CLIENT_SECRET = 'PFMCq-bj0fJFFV6YcN1rW4po';
-		var REDIRECT_URL = 'http://localhost:5000/api/auth/google/return';
+		var REDIRECT_URL = 'http://thurgood-staging.herokuapp.com/api/auth/google/return';
 		var oauth2Client = new OAuth2(CLIENT_ID, CLIENT_SECRET, REDIRECT_URL);
 		oauth2Client.setCredentials({
 			access_token : bodyParsed.access_token			

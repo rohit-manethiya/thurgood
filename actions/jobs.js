@@ -418,7 +418,7 @@ exports.jobsSubmit = {
         if (!err && result == 1) {
           // Publish message
           console.log('result obtained', api.configData.rabbitmq.url);
-          amqp.connect('amqp://app9629523_heroku.com:K7RZzoTUTfKSSk3RZ6tOdyjlCO-2XgLi@tiger.cloudamqp.com/app9629523_heroku.com' ).then(function(conn){
+          amqp.connect('amqp://app9629523_heroku.com:K7RZzoTUTfKSSk3RZ6tOdyjlCO-2XgLi@tiger.cloudamqp.com/app9629523_heroku.com',{ timeout: 30 }).then(function(conn){
             console.log('Connection Succeeds', conn);
           },
               function(err){

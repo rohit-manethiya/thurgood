@@ -418,6 +418,10 @@ exports.jobsSubmit = {
         if (!err && result == 1) {
           // Publish message
           console.log('result obtained');
+          amqp.connect(api.configData.rabbitmq.url, function(error, conn) {
+            console.log('error in connection', error);
+          });
+
           amqp.connect(api.configData.rabbitmq.url ).then(function(conn) {
             console.log('connection', conn);
             return when(conn.createChannel().then(function(ch) {

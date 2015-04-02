@@ -418,9 +418,7 @@ exports.jobsSubmit = {
         if (!err && result == 1) {
           // Publish message
           console.log('result obtained', api.configData.rabbitmq.url);
-          amqp.connect(api.configData.rabbitmq.url, function(error, conn) {
-            console.log('error in connection', error);
-          });
+          
 
           amqp.connect(api.configData.rabbitmq.url ).then(function(conn) {
             console.log('connection', conn);
@@ -436,7 +434,13 @@ exports.jobsSubmit = {
                 return ch.close();
               });
             })).ensure(function() { conn.close(); });;
-          }).then(null, console.warn);
+          },
+            function(err){
+              console.log('Connection Failed', err);
+            }
+          ).then(null, function(err){
+             console.log('Error in connection', err);
+          });
 
         } else {
           console.log('result obtained in else');
